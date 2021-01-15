@@ -30,7 +30,7 @@ fauna create-key YOUR_DB_NAME --endpoint=localhost
 
 Navigate to http://localhost:5000. Enter http://localhost:8443 as the `Endpoint URL` and your secret key from the previous step as `Key Secret`.
 
-![Dashboard Screenshot](images\Dashboard_Screenshot.png)
+![Dashboard Screenshot](https://github.com/AdityaJain1030/local_faunadb/blob/master/images/Dashboard_Screenshot.png)
 
 From there you should be able to access the FaunaDB dasboard.
 
