@@ -1,24 +1,16 @@
 # Local Fauna DB Setup
 
-A [faunaDB](https://fauna.com/) local configuration, which also lets you access the dashoard at http://localhost:5000
+[FaunaDB](https://fauna.com/) local configuration, which also lets you access the dashoard at http://localhost:5000
 
 ## Prerequisites
 
 [Docker and Docker Compose](https://www.docker.com/)
 
-[NodeJS](https://nodejs.org/) (needed for the faunaDB CLI tool)
+[NodeJS](https://nodejs.org/) (needed for the FaunaDB CLI tool)
+
+Install the [FaunaDB CLI](https://github.com/fauna/fauna-shell) tool from <https://github.com/fauna/fauna-shell>
 
 ## Usage
-
-1) Clone this repo
-
-2) Run the `docker-compose`
-
-3) Install the [FaunaDB CLI](https://github.com/fauna/fauna-shell) tool from <https://github.com/fauna/fauna-shell>
-
-4) Create database and access key
-
-5) Enter key into dashboard on localhost:5000
 
 ### **Example usage**
 
@@ -29,6 +21,7 @@ git clone https://github.com/AdityaJain1030/local_faunadb
 docker-compose up -d
 npm install -g fauna-shell
 
+# fauna-cli stuff
 fauna add-endpoint http://localhost:8443/ --alias localhost --key secret
 fauna create-database YOUR_DB_NAME --endpoint=localhost
 fauna create-key YOUR_DB_NAME --endpoint=localhost
