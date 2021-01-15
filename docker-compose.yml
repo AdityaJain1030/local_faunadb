@@ -2,7 +2,7 @@ version: '3.8'
 services:
   faunadb:
     image: fauna/faunadb:latest
-    container_name: faunadb_test
+    container_name: faunadb
     ports: # comment this out if you add your app to the docker-compose
       - "8443:8443" # comment this out if you add your app to the docker-compose
       - "8084:8084" # comment this out if you add your app to the docker-compose
