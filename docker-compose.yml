@@ -1,0 +1,22 @@
+version: '3.8'
+services:
+  faunadb:
+    image: fauna/faunadb:latest
+    container_name: faunadb_test
+    ports: # comment this out if you add your app to the docker-compose
+      - "8443:8443" # comment this out if you add your app to the docker-compose
+      - "8084:8084" # comment this out if you add your app to the docker-compose
+    restart: always
+    #expose: # uncomment this if you add your app to the docker-compose
+    #  - "8443:8443" # uncomment this if you add your app to the docker-compose
+    #  - "8084:8084"  # uncomment this if you add your app to the docker-compose
+  dashboard:
+    depends_on:
+      - faunadb
+    container_name: dashboard
+    build:
+      dockerfile: Dockerfile.Dashboard
+      context: .
+    ports:
+      - "5000:3000"
+  

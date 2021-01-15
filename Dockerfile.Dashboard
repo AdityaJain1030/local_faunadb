@@ -1,0 +1,14 @@
+FROM node:alpine
+
+WORKDIR /
+
+RUN apk update && apk upgrade && \
+    apk add --no-cache bash git
+
+RUN npx degit fauna/dashboard dashboard
+
+WORKDIR /dashboard
+
+RUN npm install
+
+CMD npm run start
