@@ -1,22 +1,39 @@
 version: '3.8'
 services:
   faunadb:
+    # https://hub.docker.com/r/fauna/faunadb
     image: fauna/faunadb:latest
     container_name: faunadb
-    ports: # comment this out if you add your app to the docker-compose
-      - "8443:8443" # comment this out if you add your app to the docker-compose
-      - "8084:8084" # comment this out if you add your app to the docker-compose
     restart: always
-    #expose: # uncomment this if you add your app to the docker-compose
-    #  - "8443:8443" # uncomment this if you add your app to the docker-compose
-    #  - "8084:8084"  # uncomment this if you add your app to the docker-compose
+    volumes: #file persisting even after Docker image DB goes down
+      - lib:/var/lib/faunadb 
+      - log:/var/log/faunadb
+    logging:
+      driver: json-file
+      options:
+        max-size: '5m'
+        max-file: '1' 
+    ports: # lets you access faunaDB on your host machine, change to "expose" when needed
+     # FaunaDB endpoint 
+     - "8443:8443" 
+     # GraphQL endpoint 
+     - "8084:8084"
+    
+
   dashboard:
     depends_on:
       - faunadb
     container_name: dashboard
-    build:
+    build: 
       dockerfile: Dockerfile.Dashboard
       context: .
     ports:
       - "5000:3000"
+
+
+volumes:
+  lib:
+    driver: local
+  log:
+    driver: local
   
